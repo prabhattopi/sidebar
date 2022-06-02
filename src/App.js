@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { IconButton, Stack, useColorMode,Flex, Spacer } from "@chakra-ui/react";
+import { Sidebar } from "./comoponets/Sidebar";
 
+import {FaSun,FaMoon,FaInstagram,FaGithub,FaLinkedin} from "react-icons/fa"
 function App() {
+  const {colorMode,toggleColorMode}=useColorMode()
+  const isDark=colorMode==="dark"
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+    <Stack>
+      <Flex>
+       <Sidebar/>
+       
+       <Spacer></Spacer>
+       <IconButton mt="10px" mr={8} icon={isDark ? <FaSun/>:<FaMoon/>} isRound="true" onClick={toggleColorMode}></IconButton>
+       </Flex>
+    </Stack>
+     
   );
 }
 
